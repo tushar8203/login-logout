@@ -18,6 +18,7 @@ let store=new mongosession({
     collection:"mysession"
 });
 
+// this is the session
 app.use(session({
     secret:"Tushar",
     resave:false,
