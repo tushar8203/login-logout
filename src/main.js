@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended:true}))
 app.set("view engine","hbs");
 app.set("views", path.join(__dirname,"../templates/"));
 
+// for session storing in mongodb
 let store=new mongosession({
     uri:mongoURI,
     collection:"mysession"
