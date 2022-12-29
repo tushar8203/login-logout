@@ -5,7 +5,7 @@ let mongoose=require("mongoose");
 let path=require("path");
 let bcrypt=require("bcryptjs");
 let {sign}=require("./mongoose");
-// let {mongoUri}=require("./mongoose");
+
 let session=require("express-session");
 let mongosession=require("connect-mongodb-session")(session);
 let mongoURI="mongodb://127.0.0.1:27017/silverwinkdemo";
