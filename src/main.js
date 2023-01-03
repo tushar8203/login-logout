@@ -105,5 +105,5 @@ app.get("/signin",async(req,res)=>{
     res.redirect("/sign?=success");
 });
 
-app.listen(5082);
+app.listen(process.env.PORT);
 console.log("Server is starting at the port 5082...");
