@@ -4,14 +4,14 @@ let hbs=require("hbs");
 let mongoose=require("mongoose");
 let path=require("path");
 let bcrypt=require("bcryptjs");
-let {sign}=require("./mongoose");
+let {sign}=require("./src/mongoose");
 
 let session=require("express-session");
 let mongosession=require("connect-mongodb-session")(session);
 let mongoURI="mongodb://127.0.0.1:27017/silverwinkdemo";
 app.use(express.urlencoded({extended:true}))
 app.set("view engine","hbs");
-app.set("views", path.join(__dirname,"../templates/"));
+app.set("views", path.join(__dirname,"./templates/"));
 
 // for session storing in mongodb
 let store=new mongosession({
