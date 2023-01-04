@@ -32,7 +32,7 @@ let auth=(req,res,next)=>{
         next();
     }
     else{
-        res.redirect("/signin");
+        res.redirect("/logged");
     }
 }
 
@@ -43,10 +43,10 @@ app.get("/",auth,(req,res)=>{
 app.get("/logout",(req,res)=>{
     req.session.destroy((err)=>{
         if(err) throw err;
-        return res.redirect("/signin");
+        return res.redirect("/logged");
     })
 })
-app.get("/signin",(req,res)=>{
+app.get("/logged",(req,res)=>{
     res.render("login");
 })
 app.get("/login",async(req,res)=>{
@@ -60,7 +60,7 @@ app.get("/login",async(req,res)=>{
         if(err) return err;
         if(result==""){
             console.log("Data is not find");
-            res.redirect("/signin?=fail");
+            res.redirect("/logged?=fail");
         }
         else{
             if(bcrypt.compareSync(password,result[0].Password)){
@@ -72,7 +72,7 @@ app.get("/login",async(req,res)=>{
             }
             else{
                 console.log("password is not match")
-                res.redirect("/signin?=fail");
+                res.redirect("/logged?=fail");
             }
         }
     })
@@ -105,5 +105,5 @@ app.get("/signin",async(req,res)=>{
     res.redirect("/sign?=success");
 });
 
-app.listen(5082);
+app.listen(process.env.PORT || 5082);
 console.log("Server is starting at the port 5082...");
